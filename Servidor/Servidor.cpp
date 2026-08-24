@@ -38,15 +38,10 @@ std::string pegarValor(
 int main() {
 
     sockaddr_in serverAddress{};
-    int serverSocket, clientSocket;
+    int serverSocket, clientSocket, bytesReceived;
+    char buffer[1024] = {0};
 
-    // Criando o socket
     serverSocket = socket(AF_INET, SOCK_STREAM, 0);
-
-    if (serverSocket < 0) {
-        std::cerr << "Erro ao criar socket" << std::endl;
-        return 1;
-    }
 
     // Definindo endereço
     serverAddress.sin_family = AF_INET;
@@ -54,43 +49,17 @@ int main() {
     serverAddress.sin_addr.s_addr = INADDR_ANY;
 
     std::cout << "Servidor iniciando..." << std::endl;
+    bind(serverSocket, (struct sockaddr*)&serverAddress, sizeof(serverAddress));
 
-    if (bind(
-        serverSocket,
-        (struct sockaddr*)&serverAddress,
-        sizeof(serverAddress)
-    ) < 0) {
-        std::cerr << "Erro no bind" << std::endl;
-        close(serverSocket);
-        return 1;
-    }
 
     std::cout << "Ouvindo em 127.0.0.1:8080" << std::endl;
-
-    if (listen(serverSocket, 5) < 0) {
-        std::cerr << "Erro no listen" << std::endl;
-        close(serverSocket);
-        return 1;
-    }
+    listen(serverSocket, 5);
 
     clientSocket = accept(serverSocket, nullptr, nullptr);
-
-    if (clientSocket < 0) {
-        std::cerr << "Erro no accept" << std::endl;
-        close(serverSocket);
-        return 1;
-    }
-
     std::cout << "Cliente conectado" << std::endl;
 
-    char buffer[1024] = {0};
 
-    int bytesReceived = recv(
-        clientSocket,
-        buffer,
-        sizeof(buffer) - 1,
-        0
-    );
+    bytesReceived = recv(clientSocket, buffer, sizeof(buffer) - 1, 0);
 
     if (bytesReceived > 0) {
 
@@ -104,9 +73,6 @@ int main() {
 
         std::string tipo = pegarValor(mensagem, "tipo");
         std::string valor = pegarValor(mensagem, "val");
-
-        std::cout << "Tipo: " << tipo << std::endl;
-        std::cout << "Valor: " << valor << std::endl;
 
         std::string resposta;
 
@@ -158,18 +124,11 @@ int main() {
             resposta = "Tipo desconhecido";
         }
 
-        // Enviando resposta
-        clientSocket != -1 &&
-        send(
-            clientSocket,
-            resposta.c_str(),
-            resposta.size(),
-            0
-        );
+        std::string respostaJson = "{\"tipo\":\"" + tipo + "\",\"val\":\"" + resposta + "\"}";
 
-        std::cout << "Resposta enviada: "
-                  << resposta
-                  << std::endl;
+        send(clientSocket, respostaJson.c_str(), respostaJson.size(), 0);
+
+        std::cout << "Resposta enviada: " << respostaJson << std::endl;
     }
 
     close(clientSocket);
