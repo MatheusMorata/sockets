@@ -1,6 +1,6 @@
 local socket = require 'socket'
-local adress = 
+local adress = '0.0.0.0'
 local port = 8080
 
 
-socket:connect()
+socket:connect(adress, port)
