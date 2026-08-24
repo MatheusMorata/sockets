@@ -31,11 +31,11 @@ if ok then
             pacote.val = io.read()
         end 
 
-        pacote = string.format(
+        local resultado = string.format(
             '{"tipo":"%s","val":"%s"}',
             pacote.tipo, pacote.val)
         
-        cliente:send(pacote)
+        cliente:send(resultado)
     end
 
     cliente:close()
