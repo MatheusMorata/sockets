@@ -17,15 +17,15 @@ if ok then
         print('=============================')
         opcao = io.read()
         
-        if opcao == 1 then
+        if opcao == '1' then
             pacote.tipo = 'int'
             print('Valor: ')
             pacote.val = io.read()
-        elseif opcao == 2 then
+        elseif opcao == '2' then
             pacote.tipo = 'char'
             print('Valor: ')
             pacote.val = io.read()
-        elseif opcao == 3 then
+        elseif opcao == '3' then
             pacote.tipo = 'string'
             print('Valor: ')
             pacote.val = io.read()
