@@ -2,7 +2,7 @@ local socket = require 'socket'
 
 local address = '127.0.0.1'
 local port = 8080
-local opcao, valor = nil
+local opcao = nil
 local cliente = socket.tcp()
 local pacote = {tipo = nil, val = nil}
 
@@ -20,15 +20,15 @@ if ok then
         if opcao == 1 then
             pacote.tipo = 'int'
             print('Valor: ')
-            valor = io.read()
+            pacote.val = io.read()
         elseif opcao == 2 then
             pacote.tipo = 'char'
             print('Valor: ')
-            valor = io.read()
+            pacote.val = io.read()
         elseif opcao == 3 then
             pacote.tipo = 'string'
             print('Valor: ')
-            valor = io.read()
+            pacote.val = io.read()
         end 
 
         local pacote = string.format(
