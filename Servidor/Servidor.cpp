@@ -15,7 +15,8 @@ int main(){
     serverAddress.sin_family = AF_INET;
     serverAddress.sin_port = htons(8080);
     serverAddress.sin_addr.s_addr = INADDR_ANY;
-    std::cout <<  "Servidor iniciando" << std::end1;
+
+    std::cout <<  "Servidor iniciando" << std::endl;
 
     bind(serverSocket, (struct sockaddr*)&serverAddress, sizeof(serverAddress));
 
