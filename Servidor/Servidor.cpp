@@ -154,7 +154,7 @@ int main() {
         }
 
         // Enviando resposta
-        clienteSocket != -1 &&
+        clientSocket != -1 &&
         send(
             clientSocket,
             resposta.c_str(),
