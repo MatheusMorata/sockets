@@ -12,7 +12,7 @@ print('Conectando ao servidor...')
 
 if ok then
     print('Conectado: ' .. address .. ':' .. port)
-    while true then
+    while true do
         print('=============================')
         print('[1] - Inteiro ' .. '\n[2] - Caractere' .. '\n[3] - Cadeia de carecteres')
         print('=============================')
