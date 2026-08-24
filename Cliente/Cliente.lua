@@ -2,16 +2,19 @@ local socket = require 'socket'
 
 local address = '127.0.0.1'
 local port = 8080
-local pacote = 'Teste'
-local client = socket.tcp()
+local pacote = nil
+local cliente = socket.tcp()
 
-local ok = client:connect(address, port)
+local ok = cliente:connect(address, port)
 print('Conectando ao servidor...')
 
 if ok then
     print('Conectado: ' .. address .. ':' .. port)
-    client:send(pacote)
-    client:close()
+    print('======================================')
+    print('[1] - Inteiro ' .. '\n[2] - Caractere' .. '\n[3] - Cadeia de carecteres')
+    print('======================================')
+    cliente:send(pacote)
+    cliente:close()
 else
     print('Não conectado')
 end
