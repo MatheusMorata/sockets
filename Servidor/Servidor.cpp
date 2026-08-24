@@ -24,7 +24,7 @@ int main(){
 
     char buffer[1024] = { 0 };
     recv(clientSocket, buffer, sizeof(buffer), 0);
-    std::cout << "Message from client: " << buffer << endl;
+    std::cout << "Message from client: " << buffer << std::endl;
 
     close(serverSocket);
 
