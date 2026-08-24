@@ -10,6 +10,7 @@ local ok = client:connect(address, port)
 if ok then
     print('Conectado ao servidor')
     client:send(pacote)
+    client:close()
 else
     print('Não conectado')
 end
