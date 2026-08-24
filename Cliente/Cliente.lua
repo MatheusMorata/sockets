@@ -32,7 +32,10 @@ if ok then
             valor = io.read()
         end 
 
-        pacote = json.encode(pacote) 
+        local pacote = string.format(
+            '{"tipo":"%s","val":%s}',
+            pacote.tipo, pacote.val)
+        
         cliente:send(pacote)
     end
 
