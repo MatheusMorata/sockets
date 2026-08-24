@@ -1,4 +1,7 @@
 #include <iostream>
+#include <netinet/in.h>
+#include <sys/socket.h>
+
 
 int main(){
     sockaddr_in serverAddress;
