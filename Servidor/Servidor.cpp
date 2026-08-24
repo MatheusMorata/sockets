@@ -22,6 +22,11 @@ int main(){
 
     clientSocket = accept(serverSocket, nullptr, nullptr);
 
+    char buffer[1024] = { 0 };
+    recv(clientSocket, buffer, sizeof(buffer), 0);
+    cout << "Message from client: " << buffer
+              << endl;
+
     close(serverSocket);
 
     return 0;
