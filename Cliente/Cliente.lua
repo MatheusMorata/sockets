@@ -32,7 +32,7 @@ if ok then
         end 
 
         local pacote = string.format(
-            '{"tipo":"%s","val":%s}',
+            '{"tipo":"%s","val":"%s"}',
             pacote.tipo, pacote.val)
         
         cliente:send(pacote)
