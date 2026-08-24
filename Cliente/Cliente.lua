@@ -2,7 +2,7 @@ local socket = require 'socket'
 
 local address = '127.0.0.1'
 local port = 8080
-local pacote = 'Mensagem'
+local pacote = 'Teste'
 local client = socket.tcp()
 
 local ok = client:connect(address, port)
