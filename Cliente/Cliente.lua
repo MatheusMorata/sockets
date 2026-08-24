@@ -29,6 +29,8 @@ if ok then
             pacote.tipo = 'string'
             print('Valor: ')
             pacote.val = io.read()
+        else 
+            print('opcao invalida...')
         end 
 
         local resultado = string.format(
