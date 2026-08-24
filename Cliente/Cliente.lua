@@ -6,10 +6,10 @@ local pacote = 'Teste'
 local client = socket.tcp()
 
 local ok = client:connect(address, port)
-print('Conectado ao servidor')
+print('Conectando ao servidor...')
 
 if ok then
-    print('Conectado: ' .. address .. port)
+    print('Conectado: ' .. address .. ':' .. port)
     client:send(pacote)
     client:close()
 else
