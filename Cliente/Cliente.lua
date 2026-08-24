@@ -1,6 +1,14 @@
 local socket = require 'socket'
-local adress = '127.0.0.1'
+
+local address = '127.0.0.1'
 local port = 8080
 
+local client = socket.tcp()
 
-socket:connect(adress, port)
+local ok, err = client:connect(address, port)
+
+if not ok then
+    print("Erro ao conectar:", err)
+else
+    print("Conectado!")
+end
