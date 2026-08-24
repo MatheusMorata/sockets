@@ -31,7 +31,7 @@ if ok then
             pacote.val = io.read()
         end 
 
-        local pacote = string.format(
+        pacote = string.format(
             '{"tipo":"%s","val":"%s"}',
             pacote.tipo, pacote.val)
         
