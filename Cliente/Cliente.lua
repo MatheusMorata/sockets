@@ -1,5 +1,5 @@
 local socket = require 'socket'
-local adress = '0.0.0.0'
+local adress = '127.0.0.1'
 local port = 8080
 
 
