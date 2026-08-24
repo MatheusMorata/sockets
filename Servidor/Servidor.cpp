@@ -20,7 +20,7 @@ int main(){
 
     bind(serverSocket, (struct sockaddr*)&serverAddress, sizeof(serverAddress));
 
-    std::cout << "Ouvindo em: " << serverAddress.sin_addr.s_addr << ":" << serverAddress.sin_port << std::endl;
+    std::cout << "Ouvindo em 127.0.0.1:8080" << std::endl;
     listen(serverSocket, 5);
 
     clientSocket = accept(serverSocket, nullptr, nullptr);
