@@ -7,6 +7,11 @@
 #include <sys/socket.h>
 #include <unistd.h>
 
+// Função que procura e retorna o valor de uma chave dentro de um JSON simples.
+// Exemplo:
+// JSON:   {"tipo":"int","val":"25"}
+// chave:  "tipo"
+// retorno: "int"
 std::string pegarValor(
     const std::string& json,
     const std::string& chave
