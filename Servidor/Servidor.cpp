@@ -124,10 +124,9 @@ int main() {
             resposta = "Tipo desconhecido";
         }
 
+        // Envia resposta ao cliente
         std::string respostaJson = "{\"tipo\":\"" + tipo + "\",\"val\":\"" + resposta + "\"}";
-
         send(clientSocket, respostaJson.c_str(), respostaJson.size(), 0);
-
         std::cout << "Resposta enviada: " << respostaJson << std::endl;
     }
 
