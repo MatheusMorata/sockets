@@ -1,5 +1,4 @@
 local socket = require 'socket'
-local json = require("dkjson")
 
 local address = '127.0.0.1'
 local port = 8080
