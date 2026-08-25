@@ -19,15 +19,15 @@ if ok then
         
         if opcao == '1' then
             pacote.tipo = 'int'
-            print('Valor: ')
+            io.write('Valor: ')
             pacote.val = io.read()
         elseif opcao == '2' then
             pacote.tipo = 'char'
-            print('Valor: ')
+            io.write('Valor: ')
             pacote.val = io.read()
         elseif opcao == '3' then
             pacote.tipo = 'string'
-            print('Valor: ')
+            io.write('Valor: ')
             pacote.val = io.read()
         else 
             print('opcao invalida...')
