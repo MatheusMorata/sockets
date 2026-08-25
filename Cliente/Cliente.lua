@@ -65,6 +65,8 @@ if ok then
             )
 
             cliente:send(resultado)
+            local resposta = cliente:receive('*l')
+            print('Resposta do servidor: ' .. resposta)
         end
     end
 
