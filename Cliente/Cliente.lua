@@ -74,14 +74,20 @@ if ok then
 
             local resultado = string.format('{"tipo":"%s","val":"%s"}', pacote.tipo, pacote.val)
 
+            local inicio = socket.gettime()
+
             local enviado, erroEnvio = cliente:send(resultado .. '\n')
 
             if enviado then
 
                 local resposta, erroRecebimento = cliente:receive('*l')
 
+                local fim = socket.gettime()
+                local tempoResposta = (fim - inicio) * 1000
+
                 if resposta then
                     print('Resposta do servidor: ' .. resposta)
+                    print(string.format('Tempo de resposta: %.3f ms', tempoResposta))
                 else
                     print('Erro ao receber: ' .. tostring(erroRecebimento))
                     break
